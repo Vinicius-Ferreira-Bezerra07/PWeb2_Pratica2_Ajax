@@ -2,35 +2,30 @@
 
 // let user = 
 // const getProfile = () => {
-    const profile = fetch("https://api.github.com/users/joseolinda")
-    console.log(1);
-    const ul = document.createElement('ul')
-    
-    profile
-        .then(resposta => resposta.json())
-        .then(userGit => {
-            console.log(userGit);
-            console.log(2);
-            const { avatar_url:avatar_urlGit, login:loginGit, followers_url:followers_urlGit, gists_url:gists_urlGit} = userGit
-            
-            console.log(avatar_urlGit);
-            console.log(loginGit);
-            console.log(followers_urlGit);
-            console.log(gists_urlGit);
+const profile = fetch("https://api.github.com/users/Vinicius-Ferreira-Bezerra")
+console.log(1);
 
-            const li = document.createElement('li')
-            const avatar = document.createElement('img')
-            avatar.scr =  avatar_urlGit
-            
+profile
+    .then(resposta => resposta.json())
+    .then(userGit => {
+        console.log(userGit);
+        console.log(2);
+        const { avatar_url, login, followers_url, gists_url, url } = userGit
 
-            li.appendChild(avatar)
-            ul.appendChild(li)
+        console.log(avatar_url);
+        console.log(login);
+        console.log(followers_url);
+        console.log(gists_url);
+        console.log(url);
 
-            document.querySelector('.avatar').appendChild(ul)
-        })
-    
-   let x = document.querySelector('.avatar').appendChild(li)
-   x = `<a class="avatar" target="_top"><img src="${avatar_urlGit}" alt=""></a>`
+        const imgAvatar = document.createElement('img')
+
+        imgAvatar.src = avatar_url
+        imgAvatar.target = "_top"
+        console.log(imgAvatar);
+        document.querySelector('.github-card user-card').appendChild(imgAvatar)
+    })
+
 // }
 
 // const btnBuscar = document.querySelector('#buscar-github')
